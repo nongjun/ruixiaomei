@@ -70,11 +70,8 @@ downloads/
 tmp/
 temp/
 
-# Docker相关（保留docker-projects目录，但忽略其运行时数据）
-docker-projects/projects/*/data/
-docker-projects/projects/*/logs/
-docker-projects/shared/data/
-docker-projects/shared/logs/
+# Docker项目目录（作为独立Git仓库管理）
+# docker-projects/ 有自己的Git仓库，不在此处管理
 
 # 其他服务配置的敏感信息
 .env
