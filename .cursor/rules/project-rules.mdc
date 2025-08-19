@@ -1,0 +1,27 @@
+---
+alwaysApply: false
+---
+本服务器的ip：120.79.242.43
+
+本服务器基于Docker多项目管理系统
+
+✨ 功能特性:
+- 完整的Docker多项目管理框架
+- 项目隔离（独立网络、数据卷、端口）
+- 统一管理脚本和命令别名
+- Nginx反向代理和Portainer管理界面
+- 自动化项目创建和部署
+- 完整的文档和快速参考
+
+🔧 核心组件:
+- project-manager.sh: 主要管理脚本
+- docker-compose.global.yml: 全局服务配置
+- docker-env.sh: 环境配置和别名
+- configs/nginx/: Nginx反向代理配置
+- 完整的项目模板和文档
+
+📊 系统状态:
+- Docker 26.1.3 + Compose v2.27.0
+- 演示项目已部署并运行
+- 全局服务（Nginx + Portainer）已启动
+- 环境配置已加载到系统
