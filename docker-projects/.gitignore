@@ -1,0 +1,91 @@
+# Docker多项目管理系统 - Git忽略文件
+
+# 项目运行时数据
+projects/*/data/
+projects/*/logs/
+shared/data/
+shared/logs/
+
+# Docker运行时文件
+.env.local
+*.log
+
+# 临时文件
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# 编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.Trash-*
+*.pid
+*.lock
+
+# 备份文件
+*.bak
+*.backup
+backup-*
+
+# 敏感信息
+secrets/
+private/
+*.key
+*.pem
+*.crt
+
+# 项目特定的环境变量文件（保留模板）
+projects/*/.env
+!projects/*/.env.example
+
+# 构建产物
+dist/
+build/
+target/
+
+# 依赖目录
+node_modules/
+vendor/
+.npm/
+.yarn/
+
+# 运行时缓存
+.cache/
+tmp/
+temp/
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 压缩文件
+*.tar.gz
+*.zip
+*.rar
+
+# 自动生成的文档
+docs/generated/
+
+# IDE配置
+.project
+.classpath
+.settings/
+
+# OS生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 项目模板保留
+!projects/.gitkeep

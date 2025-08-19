@@ -1,0 +1,54 @@
+# Docker Compose配置 - 项目: demo-project
+# 创建时间: Wed Aug 20 02:08:44 AM CST 2025
+
+version: '3.8'
+
+# 项目专用网络
+networks:
+  demo-project-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/16
+
+# 项目数据卷
+volumes:
+  demo-project-data:
+    driver: local
+  demo-project-logs:
+    driver: local
+
+services:
+  # 示例Web应用服务
+  web:
+    image: nginx:alpine
+    container_name: demo-project-web
+    ports:
+      - "0:80"  # 动态端口分配
+    volumes:
+      - ./app:/usr/share/nginx/html
+      - demo-project-logs:/var/log/nginx
+    networks:
+      - demo-project-network
+    restart: unless-stopped
+    environment:
+      - PROJECT_NAME=demo-project
+    
+  # 示例数据库服务（根据需要启用）
+  # database:
+  #   image: mysql:8.0
+  #   container_name: demo-project-db
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: your_password
+  #     MYSQL_DATABASE: demo-project_db
+  #   volumes:
+  #     - demo-project-data:/var/lib/mysql
+  #   networks:
+  #     - demo-project-network
+  #   restart: unless-stopped
+
+# 外部网络连接（可选）
+# networks:
+#   default:
+#     external:
+#       name: shared-network

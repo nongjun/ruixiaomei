@@ -1,0 +1,61 @@
+# Docker多项目全局配置文件
+# 用于管理共享服务和网络
+
+version: '3.8'
+
+# 全局网络配置
+networks:
+  # 默认桥接网络 - 用于项目间通信
+  shared-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+  
+  # 隔离网络模板 - 每个项目使用独立网络
+  project-template:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+
+# 全局数据卷（已在文件末尾定义）
+
+# 共享服务（可选）
+services:
+  # 反向代理 - Nginx
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: global-nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./configs/nginx:/etc/nginx/conf.d
+      - shared-logs:/var/log/nginx
+    networks:
+      - shared-network
+    restart: unless-stopped
+  
+  # 数据库监控（可选）
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    networks:
+      - shared-network
+    restart: unless-stopped
+
+volumes:
+  portainer-data:
+  shared-logs:
+    driver: local
+  shared-data:
+    driver: local
+  shared-db-data:
+    driver: local
+
