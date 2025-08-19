@@ -81,8 +81,8 @@ secrets/
 private/
 
 # Cursor相关（保留配置但忽略缓存）
-.cursor-server/logs/
-.cursor-server/tmp/
+.cursor-server/
+!.cursor-server/data/User/settings.json
 
 # 系统服务相关
 .swas/

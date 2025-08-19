@@ -5,6 +5,7 @@
 - **IP地址**: 120.79.242.43
 - **系统**: Linux + Docker 26.1.3
 - **管理框架**: Docker多项目管理系统
+- **GitHub仓库**: https://github.com/nongjun/ruixiaomei
 
 ## 📁 Git仓库结构
 
