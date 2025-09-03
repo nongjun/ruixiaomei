@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  coze-apps:
+    build: .
+    container_name: coze-apps
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./ssl:/etc/nginx/ssl:ro
+      - ./logs:/var/log
+    environment:
+      - COZE_CN_BASE_URL=https://api.coze.cn
+      - COZE_BOT_ID=7467988865836777510
+      - COZE_API_TOKEN=pat_toUWNvmtg6r8wdhG0hezbJrLlT64G0CaH26Jh5wxxFveK50F2PGrDWlIEfMNjk3u
+    restart: unless-stopped
+    networks:
+      - coze-network
+
+networks:
+  coze-network:
+    driver: bridge
